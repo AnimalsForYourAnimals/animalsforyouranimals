@@ -10,6 +10,7 @@
         <property name="url" value="jdbc:mysql://localhost:3306/baza" />
         <property name="username" value="login" />
         <property name="password" value="haslo" />
+
     </beans:bean>
     <authentication-manager>
         <authentication-provider>
