@@ -9,9 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form th:action="@{/}" method="get">
-    <button class="btn btn-md btn-warning btn-block" type="Submit">Zaloguj się!</button>
-</form>
+
 
 <div class="container">
     <div class="row">
@@ -63,6 +61,9 @@
                 <span th:utext="${successMessage}"></span>
 
 
+            </form>
+            <form th:action="@{/}" method="get">
+                <button class="btn btn-md btn-warning btn-block" type="Submit">Zaloguj się!</button>
             </form>
         </div>
     </div>
