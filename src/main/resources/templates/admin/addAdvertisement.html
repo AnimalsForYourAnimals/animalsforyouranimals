@@ -97,7 +97,9 @@
 
                 </div>
                 <div style="width: 70%;float:left;background-color: silver;">
-                    content
+                    <form th:action="@{addAdvertisement}" method="POST" class="form-signin">
+                        <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Dodaj" type="Submit" th:text="Dodaj"></button>
+                    </form>
 
                 </div>
 

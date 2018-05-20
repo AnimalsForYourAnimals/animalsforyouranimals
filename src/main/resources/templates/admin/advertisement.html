@@ -71,10 +71,10 @@
                     <a class="nav-link" href="/admin/home">Strona Główna <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Ogłoszenia</a>
+                    <a class="nav-link" href="/admin/advertisement">Ogłoszenia</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Użytkownicy</a>
+                    <a class="nav-link" href="/admin/users">Użytkownicy</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/logout">Wyloguj</a>
@@ -97,7 +97,9 @@
 
                 </div>
                 <div style="width: 70%;float:left;background-color: silver;">
-                    content
+                    <form th:action="@{addAdvertisement}" method="POST" class="form-signin">
+                        <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Dodaj" type="Submit" th:text="Dodaj"></button>
+                    </form>
 
                 </div>
 
