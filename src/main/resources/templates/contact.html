@@ -12,6 +12,32 @@
 
 <body style="background-color: #022411">
 
-hjghjhg
+
+<div class="container">
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">ANIMALS FOR YOUR ANIMALS</a>
+
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Strona Główna <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/registration">Zarejestruj się</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Kontakt</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--<img th:src="@{https://i.ytimg.com/vi/c1dXRNwnkj8/hqdefault.jpg}" class="img-responsive center-block" width="300" height="300" alt="Logo" />-->
+    <form th:action="@{/contact}" method="POST" class="form-signin">
+        Email:<input type ="email" />
+
+        <button type="sumbit">Wyslji wiadomość</button>
+    </form>
+</div>
 </body>
 </html>
