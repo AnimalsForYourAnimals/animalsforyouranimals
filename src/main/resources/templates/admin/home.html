@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <title>Admin page</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
@@ -10,7 +9,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <style>
         * {box-sizing: border-box}
-        body {font-family: Verdana, sans-serif; margin:0}
+        body {
+            font-family: Verdana, sans-serif;
+            margin:0;
+            background-color: burlywood;
+        }
         .mySlides1, .mySlides2 {display: none}
         img {vertical-align: middle;}
 
@@ -44,8 +47,12 @@
             background-color: #f1f1f1;
             color: black;
         }
-    </style>
 
+        #search{
+            width:80%;
+            height:40px;
+        }
+    </style>
 </head>
 
 <body>
@@ -57,7 +64,7 @@
         <div class="collapse navbar-collapse" id="navbarsExample03">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/admin/home">Strona Główna <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
@@ -71,13 +78,13 @@
             <!--<div class="panel-body">
                 <img th:src="@{https://orig00.deviantart.net/40ce/f/2012/134/2/e/fuck_yeah__png_i_by_nataliaagustina-d4zsba2.png}" class="img-responsive center-block" width="400" height="400" alt="Beer" />
             </div>-->
-            <div>
+            <div style="text-align: center;">
                 <div>
                     <form>
                         <div>
                             <input type="search" id="search" name="inputSearch"
                                    placeholder="Search in the AnimalsforyourAnimals...">
-                            <button>Search</button>
+                            <button>Szukaj</button>
                         </div>
                     </form>
                 </div>
