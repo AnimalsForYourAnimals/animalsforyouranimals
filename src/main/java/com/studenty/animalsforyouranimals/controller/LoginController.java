@@ -28,6 +28,7 @@ public class LoginController {
     }
 
 
+
     @RequestMapping(value="/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
@@ -36,6 +37,14 @@ public class LoginController {
         modelAndView.setViewName("registration");
         return modelAndView;
     }
+
+    @RequestMapping(value="/contact", method = RequestMethod.GET)
+    public ModelAndView contact(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("contact");
+        return modelAndView;
+    }
+
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
@@ -69,5 +78,19 @@ public class LoginController {
         return modelAndView;
     }
 
+    @RequestMapping(value={"/admin/advertisement"}, method = RequestMethod.GET)
+    public ModelAndView advertisement(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.setViewName("admin/advertisement");
+        return modelAndView;
+    }
 
+    @RequestMapping(value={"/admin/users"}, method = RequestMethod.GET)
+    public ModelAndView users(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/users");
+        return modelAndView;
+    }
 }

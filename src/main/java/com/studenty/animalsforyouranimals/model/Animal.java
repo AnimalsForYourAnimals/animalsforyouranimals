@@ -1,5 +1,7 @@
 package com.studenty.animalsforyouranimals.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 
 /**
@@ -12,12 +14,11 @@ public class Animal {
     @Column(name = "animal_id")
     private int idAnimal;
 
+    @NotEmpty(message = "*Wprowadź nazwe zwięrzecia")
     @Column(name = "animal_name")
     private String name;
 
-    @Column(name = "animal_cost")
-    private int costAnimal;
-
+    @NotEmpty(message = "*Wprowadź opis")
     @Column(name = "animal_descripction")
     private int descripction;
 
@@ -26,9 +27,8 @@ public class Animal {
 
     public Animal(){}
 
-    public Animal(String name, int costAnimal, int descripction) {
+    public Animal(String name, int descripction) {
         this.name = name;
-        this.costAnimal = costAnimal;
         this.descripction = descripction;
         this.pathImage = null;
     }
@@ -47,14 +47,6 @@ public class Animal {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getCostAnimal() {
-        return costAnimal;
-    }
-
-    public void setCostAnimal(int costAnimal) {
-        this.costAnimal = costAnimal;
     }
 
     public int getDescripction() {
