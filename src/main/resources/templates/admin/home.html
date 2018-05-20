@@ -3,10 +3,18 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Admin page</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#menu" ).menu();
+        } );
+    </script>
     <style>
         * {box-sizing: border-box}
         body {
@@ -14,8 +22,13 @@
             margin:0;
             background-color: burlywood;
         }
-        .mySlides1, .mySlides2 {display: none}
-        img {vertical-align: middle;}
+        .mySlides1, .mySlides2 {
+            display: none
+        }
+
+        img {
+            vertical-align: middle;
+        }
 
         .slideshow-container {
             max-width: 1000px;
@@ -25,11 +38,11 @@
 
         .prev, .next {
             cursor: pointer;
-            position: absolute;
             top: 50%;
             width: auto;
             padding: 16px;
             margin-top: -22px;
+            margin-right:-100px;
             color: white;
             font-weight: bold;
             font-size: 18px;
@@ -52,6 +65,8 @@
             width:80%;
             height:40px;
         }
+
+        #menu { width: 150px; }
     </style>
 </head>
 
@@ -59,12 +74,21 @@
 <div class="container">
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">ANIMALS FOR YOUR ANIMALS</a>
+        <a class="navbar-brand" href="#"><span th:utext="${userName}"></span></a>
 
         <div class="collapse navbar-collapse" id="navbarsExample03">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/admin/home">Strona Główna <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/admin/advertisement">Ogłoszenia</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/admin/users">Użytkownicy</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/logout">Wyloguj</a>
                 </li>
             </ul>
         </div>
@@ -72,9 +96,6 @@
 
     <div class="panel-group" style="margin-top:40px">
         <div class="panel panel-primary">
-            <div class="panel-heading">
-                <span th:utext="${userName}"></span>
-            </div>
             <!--<div class="panel-body">
                 <img th:src="@{https://orig00.deviantart.net/40ce/f/2012/134/2/e/fuck_yeah__png_i_by_nataliaagustina-d4zsba2.png}" class="img-responsive center-block" width="400" height="400" alt="Beer" />
             </div>-->
@@ -91,36 +112,50 @@
                 <div>
                     <div class="slideshow-container">
                         <div class="mySlides1">
-                            <img src="https://www.koty.pl/wp-content/uploads/2017/11/shutterstock_684452296-e1511112417106-864x575.jpg" style="width:100%">
+                            <img src="https://www.koty.pl/wp-content/uploads/2017/11/shutterstock_684452296-e1511112417106-864x575.jpg" style="width:800px;height:250px;">
                         </div>
 
                         <div class="mySlides1">
-                            <img src="https://royalcanin.pl/blog/wp-content/uploads/2016/12/176W-950x633.jpeg" style="width:100%">
+                            <img src="https://royalcanin.pl/blog/wp-content/uploads/2016/12/176W-950x633.jpeg"  style="width:800px;height:250px;">
                         </div>
-
-                        <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
                         <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+                        <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+
                     </div>
 
                 </div>
-                <div style="width: 30%;float:left;background-color: aqua;">
-                    menu
-
-
+                <div style="width: 150px;float:left;background-color: aqua;">
+                    <ul id="menu">
+                        <li class="ui-state-disabled"><div>Menu</div></li>
+                        <li><div>Koty</div></li>
+                        <li><div>Ryby</div></li>
+                        <li><div>Psy</div>
+                            <ul>
+                                <li><div>Owczarki niemieckie</div></li>
+                                <li><div>Mieszaniec</div></li>
+                            </ul>
+                        </li>
+                        <li><div>Pająki</div></li>
+                        <li><div>Jaszczurki</div></li>
+                    </ul>
                 </div>
-                <div style="width: 70%;float:left;background-color: silver;">
-                    content
+                <div style="width: 960px;float:left;background-color: silver;">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio leo, tristique sed ultrices sit amet, accumsan finibus mi. Maecenas cursus pulvinar facilisis. Ut tempor et nulla eget congue. Mauris eu egestas nunc, molestie molestie lectus. Quisque pretium tincidunt arcu non semper. Duis porttitor est massa, quis scelerisque erat condimentum et. Sed nec nisi lacus.
+
+                    Vestibulum nec quam dui. Praesent semper at quam eu tincidunt. Proin dapibus pellentesque ante eget dapibus. Etiam blandit, metus in bibendum tincidunt, diam massa condimentum libero, non lacinia erat felis et lectus. Proin hendrerit nisl sit amet sem consectetur dapibus. Sed laoreet, ligula sed tempor hendrerit, neque lacus mattis orci, porta gravida quam mi non est. Donec laoreet condimentum pretium. Duis ut tortor ipsum. Maecenas finibus magna arcu, id blandit felis accumsan eget. Proin malesuada ac orci in hendrerit. Sed euismod orci in mollis cursus. Quisque semper interdum mauris non laoreet. Nunc mauris sapien, volutpat sit amet nisi id, tempus venenatis urna.
+
+                    Cras ultricies dolor vel malesuada pulvinar. Maecenas quis nibh est. In sagittis facilisis rhoncus. Vivamus viverra pulvinar ante vel posuere. Fusce placerat magna lectus, egestas sollicitudin dui tempor nec. Nulla porta velit id odio semper, vitae tincidunt mi ultrices. Donec accumsan eget nibh aliquam egestas. Maecenas ultricies odio fermentum, gravida massa sed, aliquam turpis. Phasellus eget mauris scelerisque, semper tortor sit amet, pretium eros. Duis fringilla, metus vehicula ullamcorper aliquam, turpis elit mattis nibh, id tincidunt enim nibh ut arcu. Etiam commodo ex eu placerat egestas.
+
+                    Donec fringilla lacinia sapien ut ornare. Donec luctus fringilla volutpat. Integer sapien metus, pretium at efficitur non, aliquam condimentum dolor. Maecenas in lacinia arcu, scelerisque ullamcorper sapien. Donec efficitur lacinia laoreet. Donec iaculis orci magna, eu bibendum turpis finibus non. In eget sapien mattis, placerat nisi nec, posuere purus. Cras facilisis orci augue, et lacinia augue sodales et. Sed at mauris viverra, mollis nibh at, vulputate diam. Morbi pulvinar egestas augue, et vulputate justo venenatis nec. Praesent tempor eget mi vel scelerisque. Integer blandit porttitor enim eu auctor. Curabitur quis aliquam neque.
+
+                    Curabitur eget libero sollicitudin, ullamcorper ante ac, vehicula nulla. Maecenas egestas dui ac placerat finibus. Suspendisse vel orci nulla. Donec eros lorem, viverra nec turpis quis, porta pulvinar lorem. Aenean fringilla, turpis et finibus luctus, diam urna ornare eros, aliquam consectetur lorem nulla sed nisi. Donec ut laoreet velit, in dapibus est. Aenean nec dolor tempus, laoreet libero nec, malesuada sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam sit amet diam sodales, eleifend mi ac, commodo diam. Nulla facilisi. Nulla condimentum in diam sed accumsan. In nec metus sapien. Nunc quis quam vulputate, rutrum neque ac, eleifend augue. Vestibulum vitae ante a nunc imperdiet elementum. Cras volutpat, nibh in consectetur semper, sem ligula imperdiet odio, laoreet sodales enim enim at augue.
 
                 </div>
 
             </div>
-            <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+            <!--<p class="admin-message-text text-center" th:utext="${adminMessage}"></p>-->
         </div>
     </div>
-    <form th:action="@{/logout}" method="get" >
-        <button class="btn btn-md btn-danger btn-block" name="registration"
-                type="Submit">Wyloguj</button>
-    </form>
 
 </div>
 <script>
