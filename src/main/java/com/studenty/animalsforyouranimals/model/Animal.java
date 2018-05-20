@@ -9,14 +9,19 @@ import javax.persistence.*;
 public class Animal {
     @Id
     @GeneratedValue
+    @Column(name = "animal_id")
     private int idAnimal;
 
+    @Column(name = "animal_name")
     private String name;
 
+    @Column(name = "animal_cost")
     private int costAnimal;
 
+    @Column(name = "animal_descripction")
     private int descripction;
 
+    @Column(name = "url_image")
     private String pathImage;
 
     public Animal(){}
