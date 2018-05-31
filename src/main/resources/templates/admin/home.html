@@ -10,74 +10,187 @@
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        $( function() {
-            $( "#menu" ).menu();
-        } );
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        * {box-sizing: border-box}
+        * {
+            box-sizing: border-box;
+        }
+
+        form.example input[type=text] {
+            padding: 10px;
+            font-size: 17px;
+            border: 1px solid grey;
+            float: left;
+            width: 80%;
+            background: #f1f1f1;
+        }
+
+        /* Style the submit button */
+        form.example button {
+            float: left;
+            width: 20%;
+            padding: 10px;
+            background: #2196F3;
+            color: white;
+            font-size: 17px;
+            border: 1px solid grey;
+            border-left: none; /* Prevent double borders */
+            cursor: pointer;
+        }
+
+        form.example button:hover {
+            background: #0b7dda;
+        }
+
+        /* Clear floats */
+        form.example::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
         body {
             font-family: Verdana, sans-serif;
             margin:0;
-            background-color: burlywood;
-        }
-        .mySlides1, .mySlides2 {
-            display: none
+
         }
 
         img {
             vertical-align: middle;
         }
 
-        .slideshow-container {
-            max-width: 1000px;
-            position: relative;
-            margin: auto;
-        }
-
-        .prev, .next {
-            cursor: pointer;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            margin-right:-100px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-        }
-
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        .prev:hover, .next:hover {
+        /* Style the tab */
+        .tab {
+            float: left;
+            border: 1px solid #ccc;
             background-color: #f1f1f1;
+            width: 20%;
+            height: 300px;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            display: block;
+            background-color: inherit;
             color: black;
+            padding: 22px 16px;
+            width: 100%;
+            border: none;
+            outline: none;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 17px;
         }
 
-        #search{
-            width:80%;
-            height:40px;
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
         }
 
-        #menu {
-            width: 150px;
-            background-color: silver;
+        /* Create an active/current "tab button" class */
+        .tab button.active {
+            background-color: #ccc;
         }
+
+        /* Style the tab content */
+        .tabcontent {
+            float: left;
+            padding: 0px 12px;
+            border: 1px solid #ccc;
+            width: 80%;
+            border-left: none;
+            height: 300px;
+        }
+        /* Create three equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 10px;
+            height: 270px; /* Should be removed. Only for demonstration */
+            border:2px silver solid;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .image {
+            opacity: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .container:hover .image {
+            opacity: 0.3;
+        }
+
+        .container:hover .middle {
+            opacity: 1;
+        }
+
+        .text {
+            background-color: #a29a9a;
+            color: white;
+            font-size: 16px;
+            padding: 16px 32px;
+            opacity: 0.5;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .center {
+            text-align: center;
+            margin-top:5px;
+        }
+
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+        }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination a:hover:not(.active) {background-color: #ddd;}
     </style>
+
 </head>
 
 <body>
 <div class="container">
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><span th:utext="${userName}"></span></a>
 
         <div class="collapse navbar-collapse" id="navbarsExample03">
             <ul class="navbar-nav mr-auto">
@@ -99,88 +212,162 @@
 
     <div class="panel-group" style="margin-top:40px">
         <div class="panel panel-primary">
-            <!--<div class="panel-body">
-                <img th:src="@{https://orig00.deviantart.net/40ce/f/2012/134/2/e/fuck_yeah__png_i_by_nataliaagustina-d4zsba2.png}" class="img-responsive center-block" width="400" height="400" alt="Beer" />
-            </div>-->
-            <div style="text-align: center;">
-                <div>
-                    <form>
-                        <div>
-                            <input type="search" id="search" name="inputSearch"
-                                   placeholder="Search in the AnimalsforyourAnimals...">
-                            <button>Szukaj</button>
-                        </div>
-                    </form>
+            <div>
+                <form class="example" method="GET">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <br />
+            <!-- content -->
+            <div>
+                <div class="tab">
+                    <button class="tablinks" onclick="openCity(event, 'Ssaki')" id="defaultOpen">Ssaki</button>
+                    <button class="tablinks" onclick="openCity(event, 'Ptaki')">Ptaki</button>
+                    <button class="tablinks" onclick="openCity(event, 'Gady')">Gady</button>
+                    <button class="tablinks" onclick="openCity(event, 'Plazy')">Płazy</button>
+                    <button class="tablinks" onclick="openCity(event, 'Ryby')">Ryby</button>
+                    <button class="tablinks" onclick="openCity(event, 'Stawonogi')">Stawonogi</button>
                 </div>
-                <div>
-                    <div class="slideshow-container">
-                        <div class="mySlides1">
-                            <img src="https://www.koty.pl/wp-content/uploads/2017/11/shutterstock_684452296-e1511112417106-864x575.jpg" style="width:800px;height:250px;">
-                        </div>
 
-                        <div class="mySlides1">
-                            <img src="https://royalcanin.pl/blog/wp-content/uploads/2016/12/176W-950x633.jpeg"  style="width:800px;height:250px;">
+                <div id="Ssaki" class="tabcontent">
+                    <div class="row">
+                        <div class="column">
+                            <div class="container">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Kot_z_mysz%C4%85.jpg/220px-Kot_z_mysz%C4%85.jpg" alt="Avatar" class="image" style="width:100%">
+                                <div class="middle">
+                                    <div class="text"><a href="#">Zobacz</a></div>
+                                </div>
+                            </div>
                         </div>
-                        <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
-                        <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
-
+                        <div class="column">
+                            <div class="container">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Kot_z_mysz%C4%85.jpg/220px-Kot_z_mysz%C4%85.jpg" alt="Avatar" class="image" style="width:100%">
+                                <div class="middle">
+                                    <div class="text"><a href="#">Zobacz</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="container">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Kot_z_mysz%C4%85.jpg/220px-Kot_z_mysz%C4%85.jpg" alt="Avatar" class="image" style="width:100%">
+                                <div class="middle">
+                                    <div class="text"><a href="#">Zobacz</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <div class="container">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Kot_z_mysz%C4%85.jpg/220px-Kot_z_mysz%C4%85.jpg" alt="Avatar" class="image" style="width:100%">
+                                <div class="middle">
+                                    <div class="text"><a href="#">Zobacz</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="container">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Kot_z_mysz%C4%85.jpg/220px-Kot_z_mysz%C4%85.jpg" alt="Avatar" class="image" style="width:100%">
+                                <div class="middle">
+                                    <div class="text"><a href="#">Zobacz</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="container">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Kot_z_mysz%C4%85.jpg/220px-Kot_z_mysz%C4%85.jpg" alt="Avatar" class="image" style="width:100%">
+                                <div class="middle">
+                                    <div class="text"><a href="#">Zobacz</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <div class="container">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Kot_z_mysz%C4%85.jpg/220px-Kot_z_mysz%C4%85.jpg" alt="Avatar" class="image" style="width:100%">
+                                <div class="middle">
+                                    <div class="text"><a href="#">Zobacz</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="container">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Kot_z_mysz%C4%85.jpg/220px-Kot_z_mysz%C4%85.jpg" alt="Avatar" class="image" style="width:100%">
+                                <div class="middle">
+                                    <div class="text"><a href="#">Zobacz</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="container">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Kot_z_mysz%C4%85.jpg/220px-Kot_z_mysz%C4%85.jpg" alt="Avatar" class="image" style="width:100%">
+                                <div class="middle">
+                                    <div class="text"><a href="#">Zobacz</a></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
+
+                    <div class="center">
+                        <div class="pagination">
+                            <a href="#">&laquo;</a>
+                            <a href="#" class="active">1</a>
+                            <a href="#" >2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#">6</a>
+                            <a href="#">&raquo;</a>
+                        </div>
+                    </div>
                 </div>
-                <div style="width: 150px;float:left;background-color: aqua;">
-                    <ul id="menu">
-                        <li class="ui-state-disabled"><div>Menu</div></li>
-                        <li><div>Koty</div></li>
-                        <li><div>Ryby</div></li>
-                        <li><div>Psy</div>
-                            <ul>
-                                <li><div>Owczarki niemieckie</div></li>
-                                <li><div>Mieszaniec</div></li>
-                            </ul>
-                        </li>
-                        <li><div>Pająki</div></li>
-                        <li><div>Jaszczurki</div></li>
-                    </ul>
+
+                <div id="Ptaki" class="tabcontent">
+                    <h3>Ptaki</h3>
                 </div>
-                <div style="width: 960px;float:left;background-color: silver;">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio leo, tristique sed ultrices sit amet, accumsan finibus mi. Maecenas cursus pulvinar facilisis. Ut tempor et nulla eget congue. Mauris eu egestas nunc, molestie molestie lectus. Quisque pretium tincidunt arcu non semper. Duis porttitor est massa, quis scelerisque erat condimentum et. Sed nec nisi lacus.
 
-                    Vestibulum nec quam dui. Praesent semper at quam eu tincidunt. Proin dapibus pellentesque ante eget dapibus. Etiam blandit, metus in bibendum tincidunt, diam massa condimentum libero, non lacinia erat felis et lectus. Proin hendrerit nisl sit amet sem consectetur dapibus. Sed laoreet, ligula sed tempor hendrerit, neque lacus mattis orci, porta gravida quam mi non est. Donec laoreet condimentum pretium. Duis ut tortor ipsum. Maecenas finibus magna arcu, id blandit felis accumsan eget. Proin malesuada ac orci in hendrerit. Sed euismod orci in mollis cursus. Quisque semper interdum mauris non laoreet. Nunc mauris sapien, volutpat sit amet nisi id, tempus venenatis urna.
-
-                    Cras ultricies dolor vel malesuada pulvinar. Maecenas quis nibh est. In sagittis facilisis rhoncus. Vivamus viverra pulvinar ante vel posuere. Fusce placerat magna lectus, egestas sollicitudin dui tempor nec. Nulla porta velit id odio semper, vitae tincidunt mi ultrices. Donec accumsan eget nibh aliquam egestas. Maecenas ultricies odio fermentum, gravida massa sed, aliquam turpis. Phasellus eget mauris scelerisque, semper tortor sit amet, pretium eros. Duis fringilla, metus vehicula ullamcorper aliquam, turpis elit mattis nibh, id tincidunt enim nibh ut arcu. Etiam commodo ex eu placerat egestas.
-
-                    Donec fringilla lacinia sapien ut ornare. Donec luctus fringilla volutpat. Integer sapien metus, pretium at efficitur non, aliquam condimentum dolor. Maecenas in lacinia arcu, scelerisque ullamcorper sapien. Donec efficitur lacinia laoreet. Donec iaculis orci magna, eu bibendum turpis finibus non. In eget sapien mattis, placerat nisi nec, posuere purus. Cras facilisis orci augue, et lacinia augue sodales et. Sed at mauris viverra, mollis nibh at, vulputate diam. Morbi pulvinar egestas augue, et vulputate justo venenatis nec. Praesent tempor eget mi vel scelerisque. Integer blandit porttitor enim eu auctor. Curabitur quis aliquam neque.
-
-                    Curabitur eget libero sollicitudin, ullamcorper ante ac, vehicula nulla. Maecenas egestas dui ac placerat finibus. Suspendisse vel orci nulla. Donec eros lorem, viverra nec turpis quis, porta pulvinar lorem. Aenean fringilla, turpis et finibus luctus, diam urna ornare eros, aliquam consectetur lorem nulla sed nisi. Donec ut laoreet velit, in dapibus est. Aenean nec dolor tempus, laoreet libero nec, malesuada sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam sit amet diam sodales, eleifend mi ac, commodo diam. Nulla facilisi. Nulla condimentum in diam sed accumsan. In nec metus sapien. Nunc quis quam vulputate, rutrum neque ac, eleifend augue. Vestibulum vitae ante a nunc imperdiet elementum. Cras volutpat, nibh in consectetur semper, sem ligula imperdiet odio, laoreet sodales enim enim at augue.
-
+                <div id="Gady" class="tabcontent">
+                    <h3>Gady</h3>
                 </div>
+                <div id="Plazy" class="tabcontent">
+                    <h3>Plazy</h3>
+                </div>
+                <div id="Ryby" class="tabcontent">
+                    <h3>Ryby</h3>
+                </div>
+                <div id="Stawonogi" class="tabcontent">
+                    <h3>Stawonogi</h3>
+                </div>
+
 
             </div>
-            <!--<p class="admin-message-text text-center" th:utext="${adminMessage}"></p>-->
+
+
+
         </div>
     </div>
 
 </div>
 <script>
-    var slideIndex = [1,1];
-    var slideId = ["mySlides1", "mySlides2"]
-    showSlides(1, 0);
-    showSlides(1, 1);
-
-    function plusSlides(n, no) {
-        showSlides(slideIndex[no] += n, no);
-    }
-
-    function showSlides(n, no) {
-        var i;
-        var x = document.getElementsByClassName(slideId[no]);
-        if (n > x.length) {slideIndex[no] = 1}
-        if (n < 1) {slideIndex[no] = x.length}
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
         }
-        x[slideIndex[no]-1].style.display = "block";
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
     }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
 </script>
 </body>
 </html>
