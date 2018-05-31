@@ -1,12 +1,14 @@
 package com.studenty.animalsforyouranimals.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.stereotype.Indexed;
 
 import javax.persistence.*;
 
 /**
  * Created by Sławomir Wójcik on 2018-05-20.
  */
+@Indexed
 @Entity
 public class Animal {
     @Id

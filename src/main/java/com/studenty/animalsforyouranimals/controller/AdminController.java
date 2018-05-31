@@ -49,12 +49,8 @@ public class AdminController {
     }
 
     @RequestMapping(value={"/admin/addAdvertisement"}, method = RequestMethod.GET)
-    public ModelAndView addAdvertisement(){
-        ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByEmail(auth.getName());
-        modelAndView.setViewName("admin/addAdvertisement");
-        return modelAndView;
+    public void addAdvertisement(){
+        System.out.print("dodano");
     }
 
     @RequestMapping(value={"/admin/users"}, method = RequestMethod.GET)
@@ -63,4 +59,6 @@ public class AdminController {
         modelAndView.setViewName("admin/users");
         return modelAndView;
     }
+
 }
+
