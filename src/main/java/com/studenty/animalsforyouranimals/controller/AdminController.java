@@ -48,6 +48,24 @@ public class AdminController {
         return modelAndView;
     }
 
+    @RequestMapping(value={"/admin/AnimalAD"}, method = RequestMethod.GET)
+    public ModelAndView animalAd(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.setViewName("admin/AnimalAD");
+        return modelAndView;
+    }
+
+    @RequestMapping(value={"/admin/addAnimalPage"}, method = RequestMethod.GET)
+    public ModelAndView addAnimapPage(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.setViewName("admin/addAnimalPage");
+        return modelAndView;
+    }
+
     @RequestMapping(value={"/admin/addAdvertisement"}, method = RequestMethod.GET)
     public void addAdvertisement(){
         System.out.print("dodano");

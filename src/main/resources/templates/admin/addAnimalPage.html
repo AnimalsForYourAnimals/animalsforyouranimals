@@ -104,9 +104,8 @@
         /* Create three equal columns that floats next to each other */
         .column {
             float: left;
-            width: 33.33%;
+            width: 50%;
             padding: 10px;
-            height: 270px; /* Should be removed. Only for demonstration */
             border:2px silver solid;
         }
 
@@ -199,21 +198,6 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
-
-        .buton_add{
-            background-color: #4CAF50; /* Green */
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            -webkit-transition-duration: 0.4s; /* Safari */
-            transition-duration: 0.4s;
-        }
     </style>
 </head>
 
@@ -243,66 +227,9 @@
 
     <div class="panel-group" style="margin-top:40px">
         <div class="panel panel-primary">
-            <div>
-                <center>Ogłoszenia Serwisu AnimalsForYourAnimals</center>
-            </div>
-            <div>
-                <form class="example" method="GET">
-                    <input type="text" placeholder="Search Users.." name="search">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-            <br />
-            <div>
-                <a href="/admin/addAnimalPage"><button class="buton_add">Dodaj Ogłoszenie</button></a>
-            </div>
-            <div>
-                <table>
-                    <tr>
-                        <th>ID Ogłoszenia</th>
-                        <th>Email</th>
-                        <th>Tytuł</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>test@test.test</td>
-                        <td>Pies Labrador</td>
-                        <td><a href="#"><img style="max-height: 30px" src="https://cdn0.iconfinder.com/data/icons/bicon/24/editor_document_file_empty_pencil_pen_edit_write_2-512.png" /></a></td>
-                        <td><a href="#"><img style="max-height:30px" src="https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-vol-5/512/237-Bin_container_open_recycle_trash-512.png"/></a></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>test@test.test</td>
-                        <td>Pies Labrador</td>
-                        <td><a href="#"><img style="max-height: 30px" src="https://cdn0.iconfinder.com/data/icons/bicon/24/editor_document_file_empty_pencil_pen_edit_write_2-512.png" /></a></td>
-                        <td><a href="#"><img style="max-height:30px" src="https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-vol-5/512/237-Bin_container_open_recycle_trash-512.png"/></a></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>test@test.test</td>
-                        <td>Pies Labrador</td>
-                        <td><a href="#"><img style="max-height: 30px" src="https://cdn0.iconfinder.com/data/icons/bicon/24/editor_document_file_empty_pencil_pen_edit_write_2-512.png" /></a></td>
-                        <td><a href="#"><img style="max-height:30px" src="https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-vol-5/512/237-Bin_container_open_recycle_trash-512.png"/></a></td>
-                    </tr>
-                </table>
-            </div>
-            <br/>
-            <div>
-                <div class="center">
-                    <div class="pagination">
-                        <a href="#">&laquo;</a>
-                        <a href="#" class="active">1</a>
-                        <a href="#" >2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                        <a href="#">&raquo;</a>
-                    </div>
-                </div>
-            </div>
+
+            formularz dodawania zwierzaczka
+
         </div>
     </div>
 
