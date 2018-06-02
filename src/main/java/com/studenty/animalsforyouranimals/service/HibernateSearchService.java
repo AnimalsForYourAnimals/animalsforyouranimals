@@ -8,17 +8,16 @@ import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.util.List;
 /**
  * Created by Sławomir Wójcik on 2018-05-31.
  */
+@Service
 public class HibernateSearchService {
     @Autowired
     private final EntityManager centityManager;
-
 
     @Autowired
     public HibernateSearchService(EntityManager entityManager) {
@@ -46,19 +45,12 @@ public class HibernateSearchService {
 
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Animal.class);
 
-        // execute search
-
         List<Animal> AnimalResult = null;
         try {
             AnimalResult = jpaQuery.getResultList();
-        } catch (NoResultException nre) {
-            ;// do nothing
-
-        }
+        } catch (NoResultException nre) {}
 
         return AnimalResult;
-
-
 
     }
 }

@@ -22,14 +22,14 @@ public class Animal {
 
     @NotEmpty(message = "*Wprowadź opis")
     @Column(name = "animal_descripction")
-    private int descripction;
+    private String descripction;
 
     @Column(name = "url_image")
     private String pathImage;
 
     public Animal(){}
 
-    public Animal(String name, int descripction) {
+    public Animal(String name, String descripction) {
         this.name = name;
         this.descripction = descripction;
         this.pathImage = null;
@@ -51,11 +51,11 @@ public class Animal {
         this.name = name;
     }
 
-    public int getDescripction() {
+    public String getDescripction() {
         return descripction;
     }
 
-    public void setDescripction(int descripction) {
+    public void setDescripction(String descripction) {
         this.descripction = descripction;
     }
 
