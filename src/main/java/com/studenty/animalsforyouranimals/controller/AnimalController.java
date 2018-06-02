@@ -16,23 +16,25 @@ import java.util.List;
  */
 @Controller
 public class AnimalController {
-    //@Autowired
-   // private HibernateSearchService searchservice;
+    /*@Autowired
+   private HibernateSearchService searchservice;
 
-    //@Autowired
-    //private Animal animal;
+    @Autowired
+    private Animal animal;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String search(@RequestParam(value = "search", required = false) String q, Model model) {
         List<Animal> searchResults = null;
         try {
-           // animal.addAnimals();
-          //  searchResults = searchservice.fuzzySearch(q);
+            animal.addAnimals();
+            searchResults = searchservice.fuzzySearch(q);
 
         } catch (Exception ex) {
         }
-        //model.addAttribute("search", searchResults);
+        model.addAttribute("search", searchResults);
         return "index";
 
     }
+}*/
+
 }
